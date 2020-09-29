@@ -1,0 +1,33 @@
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
+
+target 'CatalogApp' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for CatalogApp
+
+  target 'CatalogApp-tvOSTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+  target 'CatalogAppTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+end
+
+target 'CatalogApp-tvOS' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for CatalogApp-tvOS
+
+  target 'CatalogApp-tvOSTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+end
