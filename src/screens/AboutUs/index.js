@@ -20,6 +20,7 @@ import StatusBar from '../../Config/StatusBar/index';
 import { connect } from 'react-redux';
 import AsyncStorage from '@react-native-community/async-storage';
 import CustomHeader from '../../common/Header/index';
+import styles from './style';
 
 class AboutUs extends React.Component {
   constructor(props) {
@@ -28,36 +29,17 @@ class AboutUs extends React.Component {
       visible: false,
     };
 
-    this.loaddata();
   }
   renderItemView = (item) => {
     if (this.state.visible == true) {
       if (this.state.itemValue == item.id) {
         return (
           <View
-            style={{
-              backgroundColor: '#fff',
-              marginEnd: 10,
-              margin: 10,
-              borderRadius: 8,
-              paddingVertical: 10,
-              marginBottom: 4,
-            }}>
+            style={styles.renderview}>
             <View
-              style={{
-                width: '100%',
-
-                marginTop: 8,
-              }}>
+              style={styles.viewtwo}>
               <Text
-                style={{
-                  fontSize: 14,
-                  color: '#5A6779',
-                  fontFamily: 'Poppins',
-                  marginLeft: 10,
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                }}>
+                style={styles.textsetone}>
                 {item.text}
               </Text>
             </View>
@@ -68,7 +50,6 @@ class AboutUs extends React.Component {
   };
   getVisible(item) {
     if (this.state.visible == false) {
-      console.log('rohit12' + this.state.visible);
       this.setState({
         visible: true,
         itemValue: item.id,
@@ -80,46 +61,15 @@ class AboutUs extends React.Component {
       });
     }
   }
-
-  loaddata = async () => {
-    const { Nor, PageNo } = this.state;
-    let userid = await AsyncStorage.getItem(storage.UserID);
-    let token = await AsyncStorage.getItem(storage.Token);
-
-    console.log('bdb' + userid);
-    this.props.dispatch({
-      type: 'User_Design_Details_Request',
-      url: '/NewTMApi/DDetail?UserId=7&PageNo=1&Nor=10&search=',
-      token: token,
-    });
-  };
-  updateLayout = (index) => {
-    LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
-    const array = [...this.state.listDataSource];
-    array[index]['isExpanded'] = !array[index]['isExpanded'];
-    this.setState(() => {
-      return {
-        listDataSource: array,
-      };
-    });
-  };
+  
 
   render() {
     return (
-      <View style={{ backgroundColor: '#fff', flex: 1 }}>
+      <View style={styles.Main}>
         <View
-          style={{
-            // marginTop: 10,
-            backgroundColor: '#FFFFFF',
-            width: '100%',
-            padding: 8,
-            height: 45,
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-          }}>
+          style={styles.second}>
           <TouchableOpacity
-            style={{ height: 30, width: 30, marginLeft: 8 }}
+            style={styles.touch}
             onPress={() => this.props.navigation.toggleDrawer()}>
             <Icon name="bars" size={24} color={'gray'} />
           </TouchableOpacity>
@@ -128,7 +78,7 @@ class AboutUs extends React.Component {
               this.props.navigation.navigate('Dashboard');
             }}>
             <Image
-              style={{ width: 120, height: 30 }}
+              style={styles.image}
               source={{
                 uri:
                   'https://cdn.shopify.com/s/files/1/0266/6276/4597/files/westside_logo_new.png?v=1573053071',
@@ -136,7 +86,7 @@ class AboutUs extends React.Component {
               resizeMode={'contain'}
             />
           </TouchableOpacity>
-          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+          <View style={styles.view}>
             <TouchableOpacity
               onPress={() => {
                 this.props.navigation.navigate('Search');
@@ -172,37 +122,20 @@ class AboutUs extends React.Component {
         <StatusBar />
         <ScrollView>
           <View style={{ paddingHorizontal: 10 }}>
-            <Text style={{ fontSize: 12, color: '#666666' }}>
-              {'Home > About Us'}
-            </Text>
-            <Text style={{ fontSize: 18, fontWeight: 'bold', marginTop: 10 }}>
+            <Text style={styles.textheading}>
               ABOUT US
             </Text>
           </View>
           <FlatList
             data={arr}
-            style={{ backgroundColor: '#fff' }}
             keyExtractor={(item, index) => index.toString()}
             renderItem={({ item }) => (
               <View style={{ flex: 1 }}>
                 <TouchableOpacity onPress={() => this.getVisible(item)}>
                   <View
-                    style={{
-                      marginHorizontal: 20,
-                      flexDirection: 'row',
-                      flex: 1,
-                      justifyContent: 'space-between',
-                      marginTop: 20,
-                    }}>
+                    style={styles.flatview}>
                     <Text
-                      style={{
-                        fontSize: 16,
-                        color: '#000',
-                        fontWeight: 'bold',
-                        fontFamily: 'Poppins-Bold',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                      }}>
+                      style={styles.text}>
                       {item.Heading}
                     </Text>
                     <Icon name="angle-down" size={20} color="grey" />

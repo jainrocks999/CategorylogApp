@@ -25,7 +25,7 @@ import CustomHeader from '../common/Header/index';
 
 import SplashScreen from '../screens/SplashScreen';
 
-import demo from '../screens/demo';
+//import demo from '../screens/demo';
 
 const homeStack = createStackNavigator(
   {
@@ -173,7 +173,7 @@ const AppStack = createDrawerNavigator(
 );
 const MainStack = createSwitchNavigator({
   SplashScreen: SplashScreen,
-  Demo: demo,
+ // Demo: demo,
   //Tab: bottomTab,
   AppStack: AppStack,
   Auth: AuthStack,

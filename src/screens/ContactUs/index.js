@@ -3,41 +3,25 @@ import {
   View,
   Text,
   Image,
-  Dimensions,
-  Button,
-  StyleSheet,
   ScrollView,
-  FlatList,
   TouchableOpacity,
   TextInput,
-  LayoutAnimation,
-  UIManager,
-  Platform,
-  Alert,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import CustomButton1 from '../../Config/Button/Button1_small';
 import StatusBar from '../../Config/StatusBar/index';
-import NewsLetter from '../../common/NewsLetter/index';
 import { connect } from 'react-redux';
 import CustomTextInput from '../../Config/TextInput/index';
 import colors from '../../Config/colors';
+import styles from './style';
 class ContactUs extends React.Component {
   render() {
     return (
-      <View style={{ backgroundColor: '#fff' }}>
+      <View style={styles.Main}>
         <View
-          style={{
-            marginTop: 10,
-            backgroundColor: '#FFFFFF',
-            width: '100%',
-            padding: 10,
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-          }}>
+          style={styles.second}>
           <TouchableOpacity
-            style={{ height: 40, width: 30 }}
+            style={styles.image}
             onPress={() => this.props.navigation.toggleDrawer()}>
             {/* <Image
               source={require('../../assets/Images/menu2.jpg')}
@@ -51,7 +35,7 @@ class ContactUs extends React.Component {
               this.props.navigation.navigate('Dashboard');
             }}>
             <Image
-              style={{ width: 120, height: 30 }}
+              style={styles.imageone}
               source={{
                 uri:
                   'https://cdn.shopify.com/s/files/1/0266/6276/4597/files/westside_logo_new.png?v=1573053071',
@@ -77,52 +61,47 @@ class ContactUs extends React.Component {
         </View>
         <StatusBar />
         <ScrollView>
-          <Text style={{ marginHorizontal: 10 }}>{'Home > Contact Us'}</Text>
+
           <View style={{ paddingHorizontal: 10 }}>
             <Text
-              style={{ fontSize: 18, fontWeight: 'bold', marginVertical: 20 }}>
+              style={styles.textheading}>
               CONTACT US
             </Text>
-            <Text style={{ fontSize: 18, marginBottom: 20, fontWeight: 'bold' }}>
+            <Text style={styles.textheading}>
               FOR CUSTOMER SUPPORT, FEEDBACK AND QUERIES
             </Text>
-            <Text style={{ fontSize: 18, marginBottom: 15 }}>Email</Text>
-            <Text style={{ fontSize: 12 }}>mywestside@trent-tata.com</Text>
-            <Text style={{ fontSize: 12, marginBottom: 20 }}>
+            <Text style={styles.emailtext}>Email</Text>
+            <Text>mywestside@trent-tata.com</Text>
+            <Text style={styles.emailtext}>
               westside@trent-tata.com
             </Text>
 
-            <Text style={{ fontSize: 18, marginBottom: 15 }}>Social Media</Text>
-            <Text style={{ fontSize: 12 }}>Facebook @westsidefanpage</Text>
-            <Text style={{ fontSize: 12 }}>Instagram @westsidestores</Text>
-            <Text style={{ fontSize: 12, marginBottom: 20 }}>
+            <Text style={styles.emailtext}>Social Media</Text>
+            <Text>Facebook @westsidefanpage</Text>
+            <Text>Instagram @westsidestores</Text>
+            <Text>
               Twitter @westsidestores{' '}
             </Text>
 
-            <Text style={{ fontSize: 18, marginBottom: 15 }}>Telephone</Text>
-            <Text style={{ fontSize: 12 }}>+91-022-6700 9000</Text>
-            <Text style={{ fontSize: 12 }}>+91-022-6700 9026 / 27</Text>
-            <Text style={{ fontSize: 12 }}>+91-022-6700 9183 </Text>
-            <Text style={{ fontSize: 12, marginBottom: 20 }}>
+            <Text style={styles.emailtext}>Telephone</Text>
+            <Text>+91-022-6700 9000</Text>
+            <Text>+91-022-6700 9026 / 27</Text>
+            <Text>+91-022-6700 9183 </Text>
+            <Text style={styles.emailtext}>
               Toll Free Number: 18002099901{' '}
             </Text>
           </View>
 
-          <View style={{ paddingLeft: 10, paddingRight: 30 }}>
+          <View style={styles.viewdata}>
             <Text
-              style={{ fontSize: 18, fontWeight: 'bold', marginVertical: 20 }}>
+              style={styles.text}>
               ENQUIRY FORM
             </Text>
             <CustomTextInput placeholder={'Name*'} />
             <CustomTextInput placeholder={'Email*'} />
             <CustomTextInput placeholder={'Mobile No*'} />
             <View
-              style={{
-                borderWidth: 0.5,
-                borderBottomColor: colors.grey,
-                width: '100%',
-                height: 200,
-              }}>
+              style={styles.renderview}>
               <TextInput
                 style={{
                   paddingHorizontal: 10,
@@ -136,38 +115,17 @@ class ContactUs extends React.Component {
                 this.props.navigation.navigate('RegisterTwo');
               }}
               viewStyles={{ width: '49%' }}
-              styles={{
-                marginTop: 20,
-                height: 35,
-                backgroundColor: '#000',
-                justifyContent: 'center',
-                alignItems: 'center',
-                marginVertical: 10,
-              }}
-              textstyles={{
-                color: '#fff',
-                fontSize: 12,
-                alignSelf: 'center',
-              }}
+              styles={styles.viewtwo}
+              textstyles={styles.textsetone}
               title={'SEND'}
             />
           </View>
           <Text
-            style={{
-              marginTop: 40,
-              marginBottom: 20,
-              fontSize: 18,
-              fontWeight: 'bold',
-              marginLeft: 10,
-            }}>
+            style={styles.btnset}>
             OUR CORPORATE OFFICE
           </Text>
           <View
-            style={{
-              marginLeft: 10,
-              marginRight: 30,
-              marginTop: 20,
-            }}>
+            style={styles.viewsecond}>
             <View
               style={{
                 marginBottom: 10,
@@ -179,33 +137,29 @@ class ContactUs extends React.Component {
               </Text>
             </View>
 
-            <Text style={{ fontSize: 12 }}>Trent Limited, Trent House,</Text>
-            <Text style={{ fontSize: 12 }}>G Block, Plot No C - 60,</Text>
-            <Text style={{ fontSize: 12 }}>
+            <Text>Trent Limited, Trent House,</Text>
+            <Text>G Block, Plot No C - 60,</Text>
+            <Text>
               Beside Citibank, Bandra Kurla Complex,
             </Text>
-            <Text style={{ fontSize: 12 }}>Bandra (East), Mumbai 51</Text>
+            <Text>Bandra (East), Mumbai 51</Text>
           </View>
           <View
-            style={{
-              marginLeft: 10,
-              marginRight: 30,
-              marginTop: 20,
-            }}>
+            style={styles.viewsecond}>
             <View
               style={{
                 marginBottom: 10,
                 borderBottomWidth: 0.5,
               }}>
               <Text
-                style={{ fontSize: 16, marginBottom: 15, fontWeight: 'bold' }}>
+                style={styles.viewvalue}>
                 Telephone
               </Text>
             </View>
 
-            <Text style={{ fontSize: 12 }}>+91-022-6700 9000</Text>
-            <Text style={{ fontSize: 12 }}>+91-022-6700 9026 / 27</Text>
-            <Text style={{ fontSize: 12, marginBottom: 20 }}>
+            <Text>+91-022-6700 9000</Text>
+            <Text>+91-022-6700 9026 / 27</Text>
+            <Text>
               Toll Free Number: 18002099901{' '}
             </Text>
           </View>

@@ -23,10 +23,23 @@ import Axios from 'axios';
 import { API } from '../../common/Constants';
 import Loader from '../../Util/loading';
 import Spinner from 'react-native-loading-spinner-overlay';
-//global inislize 
+import Client from 'shopify-buy';
+
+// global inislize 
 let initialCount = 0
 let finalCount = 0
 
+const client = Client.buildClient({
+  domain: 'my-westside.myshopify.com',
+  storefrontAccessToken: '206c5b40f0e0666cc4c7d5304b071f3c',
+});
+
+// Initializing a client to return translated content
+const clientWithTranslatedContent = Client.buildClient({
+  domain: 'my-westside.myshopify.com',
+  storefrontAccessToken: '206c5b40f0e0666cc4c7d5304b071f3c',
+  language: 'ja-JP'
+});
 class ProductScreen extends Component {
   static navigationOptions = ({ navigation }) => ({
     drawerIcon: () => (
@@ -50,6 +63,34 @@ class ProductScreen extends Component {
   loaddata = async () => {
     initialCount = 0
     finalCount = 0
+    client.product.fetch('155269627957').then((product) => {
+      // Do something with the product
+      console.log('rohit collection id'+JSON.stringify(product));
+    })
+    // client.product.fetchAll().then((products) => {
+    //   // Do something with the products
+    //   console.log('hhhhhhhh'+products);
+    // });
+    
+    // // Fetch a single product by ID
+    // const productId = '';
+    
+    // client.product.fetch(productId).then((product) => {
+    //   // Do something with the product
+    //   console.log(product);
+    // });
+    
+    // // Fetch a single product by Handle
+    // const handle = 'product-handle';
+    
+    // client.product.fetchByHandle(handle).then((product) => {
+    //   // Do something with the product
+    //   console.log(product);
+    // });
+
+
+
+
     // Shopify.initialize(
     //   'my-westside.myshopify.com',
     //   'e44e15f3fc09c786069fe83203b0832c',
@@ -69,8 +110,10 @@ class ProductScreen extends Component {
     //     console.log('tag' + tags);
     //     // And tags...
     //   });
+
     let productInfo = this.props.navigation.getParam('productInfo');
-    console.log('productInfo', productInfo);
+    // console.log('productInfo', productInfo.id);
+
     if (productInfo) {
       const linkSplit = productInfo.link.split(':/');
       console.log('linkSplit', linkSplit);
@@ -78,6 +121,12 @@ class ProductScreen extends Component {
         .then(async (response) => {
           console.log('collection response', JSON.stringify(response));
           let collectionId = response.data.collection.id;
+console.log('rohit check data'+collectionId)
+          client.product.fetch(collectionId).then((product) => {
+            // Do something with the product
+            console.log('rohit collection id'+JSON.stringify(product));
+          })
+
           const header = {
             Authorization:
               'Basic NWYzZTdjMDAwMjZmYjBhMjUwYjdiYTkzMDBmNTcyMjU6ZDgwOGM3MzU4MGFjYmVmZDQ1YTBiZTI2MWViZjA3MGQ',

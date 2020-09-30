@@ -6,6 +6,7 @@ import Colors from '../../Config/colors/index';
 import CustomButton from '../../Config/Button/Button';
 import CustomButton1 from '../../Config/Button/Button1';
 import CustomTextInput from '../../Config/TextInput/index';
+import styles from './style';
 import colors from '../../Config/colors/index';
 import StatusBar from '../../Config/StatusBar/index';
 import NewsLetter from '../../common/NewsLetter/index';
@@ -23,41 +24,23 @@ class LoginScreen extends Component {
   render() {
     return (
       <View
-        style={{
-          flex: 1,
-          paddingTop: Platform.OS === 'ios' ? 20 : 0,
-          backgroundColor: '#FFFFFF',
-        }}>
+        style={styles.Main}>
         <View
-          style={{
-            // marginTop: 10,
-            backgroundColor: '#FFFFFF',
-            width: '100%',
-            padding: 8,
-            height: 45,
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-          }}>
+          style={styles.second}>
           <TouchableOpacity
-            style={{ height: 30, width: 30, marginLeft: 8 }}
+            style={styles.touch}
             onPress={() => this.props.navigation.toggleDrawer()}>
-            {/* <Image
-              source={require('../../assets/Images/menu2.jpg')}
-              style={styles.menu}
-              resizeMode={'stretch'
-            /> */}
             <Icon name="bars" size={24} color={'gray'} />
           </TouchableOpacity>
           <Image
-            style={{ width: 120, height: 30 }}
+            style={styles.image}
             source={{
               uri:
                 'https://cdn.shopify.com/s/files/1/0266/6276/4597/files/westside_logo_new.png?v=1573053071',
             }}
             resizeMode={'contain'}
           />
-          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+          <View style={styles.view}>
             <TouchableOpacity
               onPress={() => {
                 this.props.navigation.navigate('Search');
@@ -91,27 +74,19 @@ class LoginScreen extends Component {
 
         <StatusBar />
         <ScrollView>
-          <View style={{ paddingLeft: 10, paddingRight: 40 }}>
-            <Text style={{ fontSize: 18, fontWeight: 'bold' }}>MY ACCOUNT</Text>
-            <Text style={{ fontSize: 16, fontWeight: 'bold', marginTop: 40 }}>
+          <View style={styles.viewone}>
+            <Text style={styles.textheading}>MY ACCOUNT</Text>
+            <Text style={styles.textheadingsecond}>
               I am already registered on westside.com
             </Text>
             <Text
-              style={{
-                fontSize: 12,
-                marginTop: 20,
-              }}>
+              style={styles.text}>
               Log in with your registered e-mail address and password
             </Text>
             <CustomTextInput placeholder={'Email'} />
             <CustomTextInput placeholder={'Password'} />
             <Text
-              style={{
-                fontSize: 12,
-                marginTop: 15,
-                marginBottom: 5,
-                textDecorationLine: 'underline',
-              }}>
+              style={styles.textdecording}>
               Have you forgotten your password ?
             </Text>
             <CustomButton
@@ -120,10 +95,10 @@ class LoginScreen extends Component {
               bgcolor={'black'}
             />
 
-            <Text style={{ fontSize: 16, fontWeight: 'bold', marginTop: 40 }}>
+            <Text style={styles.textset}>
               I want a westside.com user account
             </Text>
-            <Text style={{ fontSize: 12, marginTop: 20, marginLeft: 10 }}>
+            <Text style={styles.textsetone}>
               Sign up to access the latest in fashion
             </Text>
 
@@ -131,16 +106,7 @@ class LoginScreen extends Component {
               onPress={() => {
                 this.props.navigation.navigate('RegisterOne');
               }}
-              styles={{
-                marginTop: 10,
-                width: '99%',
-                height: 35,
-                justifyContent: 'center',
-                backgroundColor: '#000',
-                justifyContent: 'center',
-                alignItems: 'center',
-                marginVertical: 10,
-              }}
+              styles={styles.btnset}
               textstyles={{
                 color: '#fff',
                 fontSize: 13,

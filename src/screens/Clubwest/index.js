@@ -3,41 +3,24 @@ import {
   View,
   Text,
   Image,
-  Dimensions,
-  Button,
-  StyleSheet,
   ScrollView,
-  FlatList,
   TouchableOpacity,
   TextInput,
-  LayoutAnimation,
-  UIManager,
-  Platform,
-  Alert,
 } from 'react-native';
-import CardView from 'react-native-cardview';
-//import {SliderBox} from 'react-native-image-slider-box';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import CustomButton from '../../Config/Button/Button';
 import StatusBar from '../../Config/StatusBar/index';
 import colors from '../../Config/colors';
 import { connect } from 'react-redux';
-import NewsLetter from '../../common/NewsLetter/index';
+import styles from './style';
 class Clubwest extends React.Component {
   render() {
     return (
-      <View style={{ backgroundColor: '#FFF', flex: 1, paddingHorizontal: 10 }}>
+      <View style={styles.Main}>
         <View
-          style={{
-            backgroundColor: '#FFFFFF',
-            width: '100%',
-            paddingVertical: 10,
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-          }}>
+          style={styles.second}>
           <TouchableOpacity
-            style={{ height: 40, width: 30 }}
+            style={styles.touch}
             onPress={() => this.props.navigation.toggleDrawer()}>
             {/* <Image
               source={require('../../assets/Images/menu2.jpg')}
@@ -51,7 +34,7 @@ class Clubwest extends React.Component {
               this.props.navigation.navigate('Dashboard');
             }}>
             <Image
-              style={{ width: 120, height: 30 }}
+              style={styles.image}
               source={{
                 uri:
                   'https://cdn.shopify.com/s/files/1/0266/6276/4597/files/westside_logo_new.png?v=1573053071',
@@ -78,14 +61,8 @@ class Clubwest extends React.Component {
         <StatusBar />
         <ScrollView>
           <View
-            style={{
-              borderWidth: 1,
-              borderColor: colors.lightGrey,
-              padding: 20,
-              margin: 10,
-              marginTop: 20,
-            }}>
-            <Text style={{ fontSize: 18, fontWeight: 'bold' }}>
+            style={styles.view}>
+            <Text style={styles.textheading}>
               CLUBWEST - VIEW POINTS
             </Text>
             <TextInput
@@ -329,7 +306,6 @@ class Clubwest extends React.Component {
 const mapStateToProps = (state) => {
   return {
     isFetching: state.isFetching,
-    CopyRight: state.CopyRight,
   };
 };
 
